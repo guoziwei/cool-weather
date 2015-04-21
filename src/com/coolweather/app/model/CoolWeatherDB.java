@@ -12,12 +12,12 @@ import com.coolweather.app.db.CoolWeatherOpenHelper;
 
 public class CoolWeatherDB {
 	/**
-	 * ¶¨ÒåÊı¾İ¿âµÄÃû
+	 * å®šä¹‰æ•°æ®åº“çš„å
 	 */
 	public static final String DB_NAME = "cool_weather";
 	
 	/**
-	 * ¶¨ÒåÊı¾İ¿âµÄ°æ±¾
+	 * å®šä¹‰æ•°æ®åº“çš„ç‰ˆæœ¬
 	 */
 	public static final int VERSION = 1;
 	
@@ -26,8 +26,8 @@ public class CoolWeatherDB {
 	private SQLiteDatabase db;
 	
 	/**
-	 * ½«¹¹Ôì·½·¨Ë½ÓĞ»¯
-	 * @param context	ÉÏÏÂÎÄ
+	 * å°†æ„é€ æ–¹æ³•ç§æœ‰åŒ–
+	 * @param context	ä¸Šä¸‹æ–‡
 	 */
 	private CoolWeatherDB(Context context) {
 		CoolWeatherOpenHelper dbHelper = new CoolWeatherOpenHelper(context, DB_NAME, null, VERSION);
@@ -35,10 +35,10 @@ public class CoolWeatherDB {
 	}
 	
 	/**
-	 * »ñÈ¡coolWeatherBDµÄÊµÀı
+	 * è·å–coolWeatherBDçš„å®ä¾‹
 	 * @return
 	 */
-	public synchronized static CoolWeatherDB getInstance() {
+	public synchronized static CoolWeatherDB getInstance(Context context) {
 		if (coolWeatherDB == null) {
 			coolWeatherDB = new CoolWeatherDB(context);
 		}
@@ -46,7 +46,7 @@ public class CoolWeatherDB {
 	}
 	
 	/**
-	 * ½«ProvinceÊµÀı´æ´¢µ½Êı¾İ¿â
+	 * å°†Provinceå®ä¾‹å­˜å‚¨åˆ°æ•°æ®åº“
 	 * @param province
 	 */
 	public void saveProvince(Province province) {
@@ -59,7 +59,7 @@ public class CoolWeatherDB {
 	}
 	
 	/**
-	 * ´ÓÊı¾İ¿âÖĞ¶ÁÈ¡È«¹úÊ¡·İĞÅÏ¢
+	 * ä»æ•°æ®åº“ä¸­è¯»å–å…¨å›½çœä»½ä¿¡æ¯
 	 * @return
 	 */
 	public List<Province> loadProvinces() {
